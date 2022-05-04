@@ -19,7 +19,6 @@ mobile : {
 },
 collegeId : {
     type:  mongoose.Schema.Types.ObjectId,
-    require: true,
     ref : 'college'
 },
 isDeleted : {

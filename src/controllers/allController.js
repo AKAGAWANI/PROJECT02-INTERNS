@@ -17,33 +17,16 @@ const createIntern = async function (req, res) {
 
 const getCollegeDetails = async function (req, res) {
     let data = req.query.collegeName
-    let checkCollege = await collegeModel.findOne({name : data}) //.select({name: 1, fullName : 1, logoLink : 1, interests: 1, _id: 0})
-    // console.log(checkCollege)
-    // console.log(checkCollege._id)
-    let checkIntern = await internModel.findOne({collegeId : checkCollege._id}).select({name: 1, email : 1, mobile : 1, _id: 1})
+    let checkCollege = await collegeModel.findOne({name : data}) 
 
-    let updatedInterests = checkCollege.interests
-    updatedInterests.push(checkIntern)
-
-    // console.log(updatedInterests[0]._id)
-    // updatedInterests.push(checkIntern)
-
-//     for (i=0; i<updatedInterests.length; i++){
+    let checkIntern = await internModel.find({collegeId : checkCollege._id}).select({name: 1, email : 1, mobile : 1, _id: 1})
     
-//     if (updatedInterests[i] == undefined){
-//         updatedInterests = updatedInterests.push(checkIntern)
-//     }
-//     if (updatedInterests[i]._id !== checkIntern._id){
-//         updatedInterests =  updatedInterests.push(checkIntern) 
-//     }
-//     // if (updatedInterests[i]._id == checkIntern._id){
-//     //     updatedInterests = updatedInterests
-//     // } 
-// }
-    
-    let updatedCollegeIntern = await collegeModel.findOneAndUpdate({name : data}, {interests : updatedInterests}, {new: true}).select({name: 1, fullName : 1, logoLink : 1, interests: 1, _id: 0})
+    checkCollege = await collegeModel.findOne({name : data}).select({name: 1, fullName : 1, logoLink : 1, interests : 1, _id: 0})
 
-    res.status(200).send({data : updatedCollegeIntern })
+    checkCollege._doc["interests"] = checkIntern
+
+    res.status(200).send({status : true, data : checkCollege})
+
 }
 
 

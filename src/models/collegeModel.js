@@ -22,8 +22,6 @@ isDeleted : {
     type : Boolean,
     default: false
 },
-interests: []
-
 
 }, {timestamps: true});
 
