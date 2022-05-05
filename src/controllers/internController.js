@@ -9,10 +9,6 @@ let isValid = (value) => {
     return true;
   };
 
-
-// let isValidObjectId = function (objectId) { return mongoose.Types.ObjectId.isValid(objectId) }
-
-
 const createIntern = async function (req, res) {
   try {  
   let data = req.body
@@ -64,10 +60,6 @@ const createIntern = async function (req, res) {
     if (!isValidCollegeId) {
       return res.status(400).send({status: false, message: "This college Id doesn't exist"})
     }
-   
-    // if (!isValidObjectId(collegeId)) {
-    //     return res.status(400).send({ status: false, msg: "collegeId is incorrect" });
-    //   }
 
     let savedData = await internModel.create(data)
     res.status(201).send({status: true, data : savedData})
