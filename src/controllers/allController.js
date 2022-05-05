@@ -23,7 +23,7 @@ const getCollegeDetails = async function (req, res) {
     
     checkCollege = await collegeModel.findOne({name : data}).select({name: 1, fullName : 1, logoLink : 1, interests : 1, _id: 0})
 
-    checkCollege._doc["interests"] = checkIntern
+    checkCollege._doc["interests"] = checkIntern // will make a key inside the object and assign value by equal operator 
 
     res.status(200).send({status : true, data : checkCollege})
 
