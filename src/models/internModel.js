@@ -28,4 +28,4 @@ isDeleted : {
 
 }, {timestamps: true});
 
-module.exports = mongoose.model('Intern', internSchema)
+module.exports = mongoose.model('intern', internSchema)
