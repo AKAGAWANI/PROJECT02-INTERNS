@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const collegeSchema = new mongoose.Schema({
+const internSchema = new mongoose.Schema({
 
 name : {
     type : String,
@@ -28,4 +28,4 @@ isDeleted : {
 
 }, {timestamps: true});
 
-module.exports = mongoose.model('intern', collegeSchema)
+module.exports = mongoose.model('Intern', internSchema)

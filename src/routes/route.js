@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const allController = require('../controllers/allController')
+const collegeController = require('../controllers/collegeController')
+const internController = require('../controllers/internController')
 
-router.post('/colleges', allController.createCollege)
+router.post('/colleges', collegeController.createCollege)
 
-router.post('/interns', allController.createIntern)
+router.post('/interns', internController.createIntern)
 
-router.get('/collegeDetails', allController.getCollegeDetails)
+router.get('/collegeDetails', collegeController.getCollegeDetails)
 
 
 
